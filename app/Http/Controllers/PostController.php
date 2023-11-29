@@ -16,15 +16,35 @@ class PostController extends Controller
         $this->middleware('auth')->except(['show', 'index']);
     }
 
+
+    public function search(Request $request)
+    {
+        $query = $request->input('username');
+    
+        $user = User::where('username', 'LIKE', '%' . $query . '%')->first();
+    
+        if ($user) {
+            // Si se encuentra un usuario, mostrar sus posts
+            $posts = $user->posts()->latest()->paginate(8);
+            return view('dashboard', compact('user', 'posts'));
+        } else {
+            // Si no se encuentra un usuario, puedes manejar este caso según tus necesidades
+            return view('dashboard', compact('user'));
+        }
+    }
+
+
+
+
     public function index(User $user){
-
         $posts = Post::where('user_id', $user->id)->latest()->paginate(8);
-
         return view('dashboard', [
             'user' => $user,
             'posts' => $posts
         ]);
     }
+
+
 
     public function create(){
         return view('posts.create');

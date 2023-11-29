@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <script src="{{ asset('js/app.js') }}" defer></script>
         @livewireStyles
+
+        @laravelPWA
     </head>
     <body class="bg-gray-100">
         <header style="background-color: #fbdc70; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"  class="p-5 border-b bg-white shadow">

@@ -7,10 +7,19 @@
 
 
 @section('contenido')
+
+<nav class="navbar navbar-light float-right">
+  <form class="form-inline" action="{{ route('dashboard') }}" method="get">
+    <input name="username" class="form-control mr-sm-2" type="text" placeholder="Buscar por nombre">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+</nav>
+
+
 <div class="flex justify-center">
     <div class="w-full md:w-4/12 lg:w-3/12 flex flex-col items-center md:flex-row">
         <div class="w-8/12 lg:w-6/18 px-5">
-            <img class="rounded-full" src="{{ $user->imagen ? asset('perfiles/'.$user->imagen) : asset('img/usuario.svg') }}" alt="">
+        <img class="rounded-full" src="{{ $user->imagen ? asset('perfiles/'.$user->imagen) : asset('img/usuario.svg') }}" alt="">
         </div>
         <div class="w-4/12 lg:w-3/18 px-5 flex flex-col items-center md:justify-center md:items-start py-10 md:py-10">
             <div class="flex items-center gap-2  mb-5">
@@ -59,7 +68,9 @@
     </div>
 </div>
 
-<section class="container mx-auto mt-10">
-    <x-listar-post :posts="$posts" />
-</section>
+ <section class="container mx-auto mt-10">
+                @isset($posts)
+                    <x-listar-post :posts="$posts" />
+                @endisset
+            </section>
 @endsection

@@ -27,6 +27,10 @@ use App\Http\Livewire\LikePost;
 
 Route::get('/', HomeController::class )->name('home');
 
+Route::get('/offline', function (){
+    return view('vendor/laravelpwa/offline');
+});
+
 // Rutas de Registro y Autentificación
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -34,8 +38,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-//Ruta para buscar al usuario
-//Route::get('/usuarios', [PerfilController::class, 'search'])->name('dashboard');
 
 // Rutas para el perifl de usuario
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');
@@ -52,6 +54,15 @@ Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'stor
 
 // Ruta de subida de imágenes al servidor
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
+
+
+
+//Route::get('/{user:username}', [PostController::class, 'searchByUsername'])->name('dashboard');
+
+//busqeuda
+Route::get('/search', [PostController::class, 'search'])->name('dashboard');
+
+
 
 
 // Like a las fotos

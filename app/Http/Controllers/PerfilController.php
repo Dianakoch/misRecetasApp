@@ -17,24 +17,11 @@ class PerfilController extends Controller
     }
 
 
-    /*
-    //buscar al usuario
-    public function search(Request $request)
-    {
-        $users = User::when($request->input('search'), function ($query) use ($request) {
-            return $query->where('username', 'like', '%' . $request->input('search') . '%');
-        })->get();
-
-        return view('dashboard', compact('users'));
-    }
-*/
-
     public function index(){
         return view('perfil.index');
     }
 
     public function store(Request $request){
-
         // Modificar el request
         $request->request->add(['username'=> Str::slug($request->username)]);
 
@@ -64,7 +51,6 @@ class PerfilController extends Controller
 
         // Guardar cambios
         $usuario = User::find(auth()->user()->id);
-
         $usuario->username = $request->username;
         $usuario->email = $request->email;
         $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? null;
