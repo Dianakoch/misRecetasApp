@@ -6,7 +6,7 @@
 @section('contenido')
     <div class="md:flex md:justify-center md:gap-10 md:items-center">
         <div class="md:w-6/12 p-5">
-            <img src="{{ asset('https://www.olivetto.com.co/wp-content/uploads/20-recetas-faciles-ratatouille.jpg?x93825') }}" alt="Imagen de registro de usuarios" class="md:rounded-lg shadow-lg">
+            <img src="{{ asset('https://laroussecocina.mx/wp-content/uploads/2022/08/5Platillos_portada.jpg') }}" alt="Imagen de registro de usuarios" class="md:rounded-lg shadow-lg">
         </div>
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-lg">
             <form method="POST" action="{{ route('register.store') }}" novalidate>
